@@ -15,9 +15,7 @@ node("docker") {
         app.push 'latest'
 
         stage "run"
-        sh "cd /"
-        sh "unzip ucp-bundle-admin.zip"
-        sh "eval $(<env.sh)"
+        sh "creds.sh"
         sh "docker stack deploy -c stack.yml testnginx"
     }
 }
