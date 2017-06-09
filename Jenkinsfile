@@ -15,7 +15,6 @@ node("docker") {
         app.push 'latest'
 
         stage "run"
-        sh "creds.sh"
-        sh "docker stack deploy -c stack.yml testnginx"
+        sh "/creds.sh"
     }
 }
