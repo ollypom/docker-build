@@ -11,7 +11,10 @@ node("docker") {
         def app = docker.build "admin/test"
     
         stage "publish"
-        app.push 'latest'
         app.push "${commit_id}"
+        app.push 'latest'
+
+        stage "run"
+        sh "docker stack deploy -c stack.yml testnginx"
     }
 }
