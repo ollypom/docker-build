@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+        webapp:
+                image: 52.56.228.3/admin/test:latest
+                deploy:
+                        mode: replicated
+                        replicas: 1
+                ports:
+                        - 30001:8080
