@@ -15,6 +15,6 @@ node("docker") {
         app.push 'latest'
 
         stage "run"
-        sh "/creds.sh"
+        sh "sudo bash creds.sh"
     }
 }
