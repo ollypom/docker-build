@@ -6,4 +6,4 @@ services:
                         mode: replicated
                         replicas: 1
                 ports:
-                        - 30001:8080
+                        - 30001:80
