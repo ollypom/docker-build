@@ -15,7 +15,7 @@ node("docker") {
         app.push 'latest'
 
         stage "deploy"
-        sh "export DOCKER_TLS_VERIFY=1 && export DOCKER_CERT_PATH=/ && DOCKER_HOST=tcp://52.56.242.202:443"
-        sh "docker stack deploy -c stack.yml nginxtest"
+        sh "export DOCKER_TLS_VERIFY=1 && export DOCKER_CERT_PATH=/ && DOCKER_HOST=tcp://52.56.242.202:443 && \
+        docker stack deploy -c stack.yml nginxtest"
     }
 }
