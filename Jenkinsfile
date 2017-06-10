@@ -15,6 +15,6 @@ node("docker") {
         app.push 'latest'
 
         stage "run"
-        sh "sudo bash creds.sh"
+        sh "docker stack deploy -c stack.yml testnging"
     }
 }
