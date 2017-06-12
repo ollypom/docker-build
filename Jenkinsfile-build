@@ -13,5 +13,4 @@ node("docker") {
     sh "export DOCKER_CONTENT_TRUST=1 && \
     docker login 52.56.228.3 --username 73b866c0-867a-463d-babc-f5d49ce6abb9 && \
     docker push 52.56.228.3/admin/test:${commit_id}"
-    }
 }
