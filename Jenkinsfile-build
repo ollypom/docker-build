@@ -7,12 +7,12 @@ node("docker") {
     
     stage "build"
     sh "export DOCKER_CONTENT_TRUST=1 && \
-    docker build -t 52.56.228.3/admin/test:${commit_id} ."
+    docker build -t 52.56.228.3/admin/nginxdemo:${commit_id} ."
     
     stage "publish"
     sh "export DOCKER_CONTENT_TRUST=1 && \
     export DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=T5mNaI1TenfG && \
-    export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=6RSRRJAwW55a && \
+    export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=4y4XyvB24q2c && \
     docker login 52.56.228.3 -u admin -p password && \
-    docker push 52.56.228.3/admin/test:${commit_id}"
+    docker push 52.56.228.3/admin/nginxdemo:${commit_id}"
 }
