@@ -1,7 +1,7 @@
 version: '3.1'
 services:
         webapp:
-                image: 52.56.228.3/admin/test:"${commit_id}"
+                image: 52.56.228.3/admin/test:latest
                 deploy:
                         mode: replicated
                         replicas: 1

@@ -7,5 +7,5 @@ node("docker-deploy") {
     
     stage "deploy"
     sh "export DOCKER_TLS_VERIFY=1 && export DOCKER_HOST=tcp://52.56.242.202:443 && export DOCKER_CERT_PATH=/ && \
-    docker stack deploy -c stack.yml nginxtest"
+    docker service update --image 52.56.228.3/admin/test:"${commit_id}" nginxtest_webapp
 }
