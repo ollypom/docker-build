@@ -13,6 +13,8 @@ node("docker") {
     sh "export DOCKER_CONTENT_TRUST=1 && \
     export DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=T5mNaI1TenfG && \
     export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=4y4XyvB24q2c && \
+    mkdir -p home/jenkins/.docker/trust/tuf/52.56.228.3/admin && \
+    cp -r /home/jenkins/workspace/docker_build/nginxdemo /home/jenkins/.docker/trust/tuf/52.56.228.3/admin/ && \
     docker login 52.56.228.3 -u admin -p password && \
     docker -D push 52.56.228.3/admin/nginxdemo:${commit_id}"
 }
