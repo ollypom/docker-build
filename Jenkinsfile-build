@@ -13,7 +13,7 @@ node("docker") {
     sh "export DOCKER_CONTENT_TRUST=1 && \
     export DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=T5mNaI1TenfG && \
     export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=4y4XyvB24q2c && \
-    notary notary key import /home/jenkins/key.pem --role targets/releases && \
+    bin/bash notary-Linux-amd64 key import /home/jenkins/key.pem --role targets/releases && \
     docker login 52.56.228.3 -u jenkins -p password && \
     docker -D push 52.56.228.3/admin/nginxdemo:${commit_id}"
 }
