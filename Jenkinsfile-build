@@ -10,9 +10,9 @@ node("docker") {
     docker -D build -t 52.56.228.3/admin/nginxdemo:${commit_id} ."
     
     stage "publish"
-    sh "export DOCKER_CONTENT_TRUST=1 && \
-    export DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=T5mNaI1TenfG && \
-    export DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=4y4XyvB24q2c && \
+    sh "export DOCKER_CONTENT_TRUST=1 \
+    DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=T5mNaI1TenfG \
+    DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=4y4XyvB24q2c && \
     docker login 52.56.228.3 -u jenkins -p password && \
     docker -D push 52.56.228.3/admin/nginxdemo:${commit_id}"
 }

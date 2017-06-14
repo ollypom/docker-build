@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome to nginx!</title>
+<title>Olly's Demo!</title>
 <style>
+    button {
+	background: none;
+        border:0px;
+    }
     body {
         width: 35em;
         margin: 0 auto;
@@ -11,15 +15,17 @@
 </style>
 </head>
 <body>
-<h1>Welcome to nginx! Signed!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
-
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
-
-<p><em>Thank you for using nginx.</em></p>
+<h1 align="center">Welcome to Olly's Demo!</h1>
+<br>
+    <script type="text/javascript">
+    var clicks = 0;
+    function onClick() {
+        clicks += 1;
+        document.getElementById("clicks").innerHTML = clicks;
+    };
+    </script>
+    <center><button type="button" onClick="onClick()"><img src="logo.png" alt="Docker Logo" style="width:325px;height:270px;"></button></center>
+    <br>
+    <center><p>Clicks: <a id="clicks">0</a></p></center>
 </body>
 </html>
