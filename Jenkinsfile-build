@@ -7,7 +7,7 @@ node("docker") {
     
     stage "build"
     sh "export DOCKER_CONTENT_TRUST=1 && \
-    docker -D build -t 52.56.228.3/admin/nginxdemo:latest ."
+    docker -D build -t 52.56.228.3/admin/nginxdemo:${commit_id} ."
     
     stage "publish"
     sh "export NOTARY_DELEGATION_PASSPHRASE=9ZI5LhoSeJc1 && \
@@ -19,5 +19,5 @@ node("docker") {
     NOTARY_DELEGATION_PASSPHRASE=9ZI5LhoSeJc1 && \
     /home/jenkins/notary -d ~/.docker/trust key list && \
     docker login 52.56.228.3 -u jenkins -p password && \
-    docker push 52.56.228.3/admin/demo-app:latest"
+    docker push 52.56.228.3/admin/demo-app:${commit_id}"
 }
