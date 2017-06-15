@@ -10,7 +10,7 @@ node("docker") {
     docker -D build -t 52.56.228.3/admin/nginxdemo:latest ."
     
     stage "publish"
-    sh "/home/jenkins/notary --help"
+    sh "/home/jenkins/notary key import /home/jenkins/key.pem"
     sh "export DOCKER_CONTENT_TRUST=1 \
     DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=T5mNaI1TenfG \
     DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=9ZI5LhoSeJc1 && \
