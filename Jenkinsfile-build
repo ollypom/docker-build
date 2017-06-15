@@ -11,7 +11,7 @@ node("docker") {
     
     stage "publish"
     sh "export NOTARY_DELEGATION_PASSPHRASE=9ZI5LhoSeJc1 && \
-    /home/jenkins/notary key import /home/jenkins/key.pem"
+    /home/jenkins/notary -d ~/.docker/trust key import /home/jenkins/key.pem"
     sh "ls -la /home/jenkins/.docker/"
     sh "export DOCKER_CONTENT_TRUST=1 \
     DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=T5mNaI1TenfG \
