@@ -8,7 +8,6 @@ node("docker-deploy") {
     stage "deploy"
     sh "export DOCKER_TLS_VERIFY=1 \
     DOCKER_HOST=tcp://52.56.242.202:443 \
-    DOCKER_CERT_PATH=/ \
-    DOCKER_CONTENT_TRUST=1 && \
+    DOCKER_CERT_PATH=/ && \
     docker service update --image 52.56.228.3/admin/demo-app:${commit_id} Demo_webapp"
 }
