@@ -1,5 +1,5 @@
 node("docker-deploy") {
-    git url: "https://github.com/ollypom/ee-demo-app.git", credentialsId: 'd3f7ca2b-c6e7-464c-9723-e90f4bbacaf7'
+    git url: "git@github.com:ollypom/ee-demo-app.git", credentialsId: '03c5601d-699a-4870-96d3-94a2251cee15'
 
     sh "git rev-parse HEAD > .git/commit-id"
     def commit_id = readFile('.git/commit-id').trim()
