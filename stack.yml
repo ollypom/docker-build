@@ -5,15 +5,15 @@ services:
         networks: 
             - backend
             - ucp-hrm
+        ports:
+            - 80
         deploy:
             mode: replicated
             replicas: 1
             placement:
                 constraints: [node.role == worker]
             labels:
-                com.docker.ucp.mesh.http.80: "external_route=http://app.olly.dtcntr.net,internal_port=80"
-        ports:
-            - 80
+                com.docker.ucp.mesh.http: "external_route=http://app.olly.dtcntr.net,internal_port=80"
 
 networks:
     backend:
