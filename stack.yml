@@ -11,7 +11,7 @@ services:
             placement:
                 constraints: [node.role == worker]
             labels:
-                com.docker.ucp.mesh.http.8080: "external_route=http://app.olly.dtcntr.net,internal_port=80"
+                com.docker.ucp.mesh.http.80: "external_route=http://app.olly.dtcntr.net,internal_port=80"
         ports:
             - 80
 
