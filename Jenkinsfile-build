@@ -7,7 +7,7 @@ node("docker") {
     
     stage "build"
     sh "export DOCKER_CONTENT_TRUST=1 && \
-    sudo docker -D build -t 52.56.228.3/admin/demo-app:${commit_id} ."
+    docker -D build -t 52.56.228.3/admin/demo-app:${commit_id} ."
     
     stage "publish"
     sh "export NOTARY_DELEGATION_PASSPHRASE=9ZI5LhoSeJc1 && \
