@@ -10,11 +10,12 @@ node("docker") {
     
     stage "publish"
     sh "export NOTARY_DELEGATION_PASSPHRASE=Z8kSWUOwL2Cy && \
-    notary -d ~/.docker/trust key import /home/jenkins/key.pem --role=targets/releases"
+    notary -d ~/.docker/trust key import /home/jenkins/key.pem --role=targets/qa"
     sh "export DOCKER_CONTENT_TRUST=1 \
     DOCKER_CONTENT_TRUST_ROOT_PASSPHRASE=T5mNaI1TenfG \
     DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=cD1W9dVVk5t8 \
     NOTARY_DELEGATION_PASSPHRASE=Z8kSWUOwL2Cy && \
     notary -d ~/.docker/trust key list && \
+    docker login -u jenkins -p password && \
     docker push 52.56.228.3/admin/demo-app:${commit_id}"
 }
