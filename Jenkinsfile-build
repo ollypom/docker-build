@@ -14,6 +14,7 @@ node("docker") {
     notary -d ~/.docker/trust key list"
     sh "export DOCKER_CONTENT_TRUST=1 \
     NOTARY_TARGETS_PASSPHRASE=Z8kSWUOwL2Cy && \
+    env | grep NOTARY && \
     docker login -u jenkins -p password 52.56.228.3 && \
     docker push 52.56.228.3/admin/demo-app:${commit_id}"
 }
