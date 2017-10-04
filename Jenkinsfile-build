@@ -1,14 +1,16 @@
 def dtr_creds = '1bbb0ffa-7ef6-4cba-9bc5-b69f94092ab8'
 def dtr_url = '52.56.228.3'
 def dtr_repo = 'admin/demo-app'
-def signing_key = 'Notary_Pass'
+def git_url = 'github.com:ollypom/ee-demo-app.git'
+def git_creds = 'git_creds'
+def signing_key = 'notary_passphrase'
 
 node("docker") {
     withCredentials([
         [$class: 'UsernamePasswordMultiBinding', credentialsId: dtr_creds, usernameVariable: 'DTR_USR', passwordVariable: 'DTR_PWD'],
         [$class: 'StringBinding', credentialsId: signing_key, variable: 'SIGNING_KEY'],
     ]){
-        git url: "git@github.com:ollypom/ee-demo-app.git", credentialsId: '03c5601d-699a-4870-96d3-94a2251cee15'
+        git url: "${git_url}", credentialsId: '${git_creds}'
           
         sh "git rev-parse HEAD > .git/commit-id"
         def commit_id = readFile('.git/commit-id').trim()
