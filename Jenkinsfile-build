@@ -1,13 +1,14 @@
 def dtr_creds = '1bbb0ffa-7ef6-4cba-9bc5-b69f94092ab8'
+
+git url: "git@github.com:ollypom/ee-demo-app.git", credentialsId: '03c5601d-699a-4870-96d3-94a2251cee15'
+sh "git rev-parse HEAD > .git/commit-id"
+def commit_id = readFile('.git/commit-id').trim()
+println commit_id
+
 node("docker") {
     withCredentials([
         [$class: 'UsernamePasswordMultiBinding', credentialsId: dtr_creds, usernaneVariable: 'DTR_USR', passwordVariable: 'DTR_PWD'],
     ]){
-#        git url: "git@github.com:ollypom/ee-demo-app.git", credentialsId: '03c5601d-699a-4870-96d3-94a2251cee15'
-#        
-#        sh "git rev-parse HEAD > .git/commit-id"
-#        def commit_id = readFile('.git/commit-id').trim()
-#        println commit_id
         
         stage ('build') {
             sh """(
