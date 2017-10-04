@@ -1,10 +1,5 @@
 def dtr_creds = '1bbb0ffa-7ef6-4cba-9bc5-b69f94092ab8'
 
-git url: "git@github.com:ollypom/ee-demo-app.git", credentialsId: '03c5601d-699a-4870-96d3-94a2251cee15'
-sh "git rev-parse HEAD > .git/commit-id"
-def commit_id = readFile('.git/commit-id').trim()
-println commit_id
-
 node("docker") {
     withCredentials([
         [$class: 'UsernamePasswordMultiBinding', credentialsId: dtr_creds, usernaneVariable: 'DTR_USR', passwordVariable: 'DTR_PWD'],
@@ -12,7 +7,7 @@ node("docker") {
         
         stage ('build') {
             sh """(
-                docker -D build -t 52.56.228.3/admin/demo-app:${commit_id} .
+                docker -D build -t 52.56.228.3/admin/demo-app:10 .
             )"""
         }
 
@@ -26,7 +21,7 @@ node("docker") {
                 export DOCKER_CONTENT_TRUST=1 \
                 DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=Z8kSWUOwL2Cy && \
                 docker login -u ${DTR_USR} -p ${DTR_PWD} 52.56.228.3 && \
-                docker push 52.56.228.3/admin/demo-app:${commit_id}
+                docker push 52.56.228.3/admin/demo-app:10
             )"""
         }
     }
