@@ -6,7 +6,7 @@ def signing_key = 'Notary_Pass'
 node("docker") {
     withCredentials([
         [$class: 'UsernamePasswordMultiBinding', credentialsId: dtr_creds, usernameVariable: 'DTR_USR', passwordVariable: 'DTR_PWD'],
-        [$class: 'string', credentialsId: signing_key, variable 'SIGNING_KEY'],
+        [$class: 'string', credentialsId: signing_key, variable: 'SIGNING_KEY'],
     ]){
         git url: "git@github.com:ollypom/ee-demo-app.git", credentialsId: '03c5601d-699a-4870-96d3-94a2251cee15'
           
