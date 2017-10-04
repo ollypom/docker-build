@@ -1,8 +1,6 @@
-environment {
-   DTR_ACCESS = credentials('1bbb0ffa-7ef6-4cba-9bc5-b69f94092ab8')
-}
-
 node("docker") {
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '1bbb0ffa-7ef6-4cba-9bc5-b69f94092ab8', usermaneVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
+
     git url: "git@github.com:ollypom/ee-demo-app.git", credentialsId: '03c5601d-699a-4870-96d3-94a2251cee15'
     
     sh "git rev-parse HEAD > .git/commit-id"
@@ -18,6 +16,6 @@ node("docker") {
     notary -d ~/.docker/trust key list"
     sh "export DOCKER_CONTENT_TRUST=1 \
     DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=Z8kSWUOwL2Cy && \
-    docker login -u ${env.DTR_ACCESS_USR} -p ${env.DTR_ACCESS_PSW} 52.56.228.3 && \
+    docker login -u $USERNAME -p $PASSWORD 52.56.228.3 && \
     docker push 52.56.228.3/admin/demo-app:${commit_id}"
 }
