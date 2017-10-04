@@ -18,7 +18,7 @@ node("docker") {
         notary -d ~/.docker/trust key list"
         sh "export DOCKER_CONTENT_TRUST=1 \
         DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=Z8kSWUOwL2Cy && \
-        docker login -u ${DTR_USR} -p ${DTR_PWD} 52.56.228.3
+        docker login -u ${DTR_USR} -p ${DTR_PWD} 52.56.228.3 && \
         docker push 52.56.228.3/admin/demo-app:${commit_id}"
     }
 }
