@@ -1,7 +1,7 @@
 def dtr_creds = '1bbb0ffa-7ef6-4cba-9bc5-b69f94092ab8'
 def dtr_url = '52.56.228.3'
 def dtr_repo = 'admin/demo-app'
-def git_url = 'github.com:ollypom/ee-demo-app.git'
+def git_url = 'git@github.com:ollypom/ee-demo-app.git'
 def git_creds = 'git_creds'
 def signing_key = 'notary_passphrase'
 
