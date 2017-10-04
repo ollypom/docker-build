@@ -2,9 +2,8 @@ def dtr_creds = '1bbb0ffa-7ef6-4cba-9bc5-b69f94092ab8'
 
 node("docker") {
     withCredentials([
-        [$class: 'UsernamePasswordMultiBinding', credentialsId: dtr_creds, usernaneVariable: 'DTR_USR', passwordVariable: 'DTR_PWD'],
+        [$class: 'UsernamePasswordMultiBinding', credentialsId: dtr_creds, usernameVariable: 'DTR_USR', passwordVariable: 'DTR_PWD'],
     ]){
-        
         stage ('build') {
             sh """(
                 docker -D build -t 52.56.228.3/admin/demo-app:10 .
