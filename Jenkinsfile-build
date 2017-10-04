@@ -15,7 +15,7 @@ node("docker") {
         println commit_id
          
         stage "build"
-        sh "docker -D build -t ${dtr_url}/${dtr_url}:${commit_id} ."
+        sh "docker -D build -t ${dtr_url}/${dtr_repo}:${commit_id} ."
         
         stage "publish"
         sh "export NOTARY_DELEGATION_PASSPHRASE=${SIGNING_KEY} && \
