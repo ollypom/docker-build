@@ -1,8 +1,17 @@
 FROM alpine:3.7
 #FROM alpine:3.2
 
-RUN apk add --no-cache nginx
+RUN apk add --update --no-cache nginx
+
+RUN adduser -D -g 'www' www && \
+    mkdir -p /www && \
+    mkdir -p /run/nginx && \
+    chown -R www:www /var/lib/nginx && \
+    chown -R www:www /www
+
+COPY myweb/nginx.conf /etc/nginx/nginx.conf
+COPY myweb/index.html /www/index.html
+COPY myweb/logo.png /www/logo.png
+
 EXPOSE 80
-RUN mkdir -p /run/nginx
-COPY myweb /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
