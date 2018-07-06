@@ -1,6 +1,8 @@
 #FROM alpine:3.7
 FROM alpine:3.2
 
+LABEL maintainer=olly@docker.com
+
 RUN apk add --update --no-cache nginx
 
 RUN adduser -D -g 'www' www && \
