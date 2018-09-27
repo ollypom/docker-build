@@ -1,5 +1,5 @@
 #FROM alpine:3.8
-FROM alpine:3.2
+FROM alpine:3.3
 
 LABEL maintainer=olly@docker.com
 
