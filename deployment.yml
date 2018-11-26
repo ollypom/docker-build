@@ -1,0 +1,56 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: default
+  name: docker-demo-svc
+spec:
+  selector:
+    app: dockerdemo
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  namespace: default
+  name: dockerdemo-deploy
+  labels:
+    app: dockerdemo-deploy
+spec:
+  selector:
+    matchLabels:
+      app: dockerdemo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: dockerdemo
+    spec:
+      containers:
+      - image: dtr.olly.dtcntr.net/prod/demo-app:35
+        name: docker-demo-container
+        env:
+        - name: app
+          value: dockerdemo
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dockerdemo-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: dockerdemo-nico.apps.olly.dtcntr.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: docker-demo-svc
+          servicePort: 8080
