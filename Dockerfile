@@ -1,5 +1,4 @@
-FROM dtr.olly.dtcntr.net/prod/alpine:3.2
-#FROM dtr.olly.dtcntr.net/prod/alpine:3.9
+FROM dtr.olly.dtcntr.net/prod/alpine:3.9
 
 LABEL maintainer=olly@example.com
 
