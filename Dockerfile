@@ -16,7 +16,7 @@ COPY myweb/nginx.conf /etc/nginx/nginx.conf
 COPY myweb/index.html /www/index.html
 COPY myweb/logo.png /www/logo.png
 
-USER nobody
+#USER nobody
 HEALTHCHECK --interval=5m --timeout=3s CMD curl --fail http://localhost/ || exit 1
 
 EXPOSE 80
