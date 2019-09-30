@@ -1,4 +1,4 @@
-FROM dtr.olly.dtcntr.net/prod/alpine:3.9
+FROM dtr.olly.dtcntr.net/prod/alpine:3.10
 
 LABEL maintainer=olly@example.com
 
