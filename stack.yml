@@ -1,9 +1,10 @@
 version: '3.2'
 services:
   frontend:
-    image: whale-demoapp:1
+    image: ollypom/whale-demoapp:2
     environment:
       REDIS_URL: backend
+      LOGO_COLOUR: blue
     networks: 
       - demoapp
     ports:

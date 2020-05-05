@@ -11,6 +11,10 @@ app = Flask(__name__)
 redisurl = os.getenv('REDIS_URL')
 hostname = socket.gethostname()
 
+# Colour the Logo
+logocolour = os.getenv('LOGO_COLOUR', 'blue')
+logo = './static/{}.png'.format(logocolour)
+
 def get_redis():
     if not hasattr(g, 'redis'):
         g.redis = Redis(host=redisurl, db=0, socket_timeout=5, decode_responses=True)
@@ -50,6 +54,7 @@ def hello():
       'index.html',
       no_clicks=no_clicks,
       hostname=hostname,
+      logo=logo,
       tables=[df.to_html(classes='data', index=False)],
       titles=df.columns.values)
 
