@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Olly's Demo!</title>
+    <link rel='stylesheet' href="{{ url_for('static',filename='style.css') }}" />
+  </head>
+  <body>
+    <h1>Hi, Whalecome to Olly's Demo!</h1></br></br>
+      <form id="whale" name='form' method="POST" action="/">
+        <center><button id="whale" type="submit" name="whale"><img src="./static/logo.png" alt="Docker Logo" style="width:325px;height:270px;"></button></center>
+      </form>
+      </br></br>
+      <center><p>No of Clicks Today: {{no_clicks}}</p></center>
+      <h3>Served by Container {{hostname}}</h3>
+      </br><hr></br>
+    <h2>Previous Days Results</h2>
+    {% for table in tables %}
+              {{ table|safe }}
+    {% endfor %}
+    </br></br>
+  </body>
+</html>
+  
