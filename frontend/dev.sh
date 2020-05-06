@@ -6,4 +6,4 @@ docker run \
   --network demoapp \
   --publish 80:80 \
   --volume $PWD/myweb:/app \
-  whale-demoapp:latest
+  ollypom/whale-demoapp:latest
