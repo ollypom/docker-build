@@ -12,3 +12,5 @@ Clicks. Each click of the whale, increments a value in a redis database.
 
 The table below the whale, shows how many clicks we have recieved in previous
 interactions.
+
+This repo includes a buildspec for AWS CodeBuild
