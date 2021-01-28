@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM public.ecr.aws/bitnami/python:3.8.7-prod
 
 LABEL maintainer=olly@example.com
 
