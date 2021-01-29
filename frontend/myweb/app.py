@@ -12,7 +12,7 @@ redisurl = os.getenv('REDIS_URL')
 hostname = socket.gethostname()
 
 # Colour the Logo
-logocolour = os.getenv('LOGO_COLOUR', 'pink')
+logocolour = os.getenv('LOGO_COLOUR', 'blue')
 logo = './static/{}.png'.format(logocolour)
 
 def get_redis():
